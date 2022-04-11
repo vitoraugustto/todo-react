@@ -18,7 +18,6 @@ export const SubTitle = ({ color, align, children }) => {
 };
 
 const StyledTitle = styled.h1`
-  display: flex;
   font-weight: bold;
   font-size: 48px;
   font-family: Lato;
@@ -27,7 +26,6 @@ const StyledTitle = styled.h1`
 `;
 
 const StyledSubTitle = styled.h2`
-  display: flex;
   font-weight: normal;
   font-size: 32px;
   font-family: Lato;

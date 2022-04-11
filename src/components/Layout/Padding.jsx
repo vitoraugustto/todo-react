@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-const PX = "px";
-
 const Padding = ({
   children,
   style,
@@ -16,7 +14,7 @@ const Padding = ({
 }) => {
   return (
     <StyledPadding
-      top={top || all | vertical}
+      top={top || all || vertical}
       right={right || all || horizontal}
       bottom={bottom || all || vertical}
       left={left || all || horizontal}
@@ -28,10 +26,10 @@ const Padding = ({
 };
 
 const StyledPadding = styled.div`
-  padding-top: ${(props) => (props.top ? props.top + PX : 0)};
-  padding-right: ${(props) => (props.right ? props.right + PX : 0)};
-  padding-bottom: ${(props) => (props.bottom ? props.bottom + PX : 0)};
-  padding-left: ${(props) => (props.left ? props.left + PX : 0)};
+  padding-top: ${(props) => (props.top ? props.top : 0)};
+  padding-right: ${(props) => (props.right ? props.right : 0)};
+  padding-bottom: ${(props) => (props.bottom ? props.bottom : 0)};
+  padding-left: ${(props) => (props.left ? props.left : 0)};
 `;
 
 export default Padding;
