@@ -18,13 +18,13 @@ const TasksScreen = () => {
   };
 
   const handleCheckTask = (task) => {
-    checkTask({ id: task._id });
-
-    fetchData();
+    checkTask({ id: task._id }).then(() => {
+      fetchData();
+    });
   };
 
   useEffect(() => {
-    if (tasks.length < 1) fetchData();
+    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
