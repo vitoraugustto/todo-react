@@ -17,8 +17,8 @@ import {
 
 const TasksScreen = () => {
   const [tasks, setTasks] = useState([]);
-  const [title, setTitle] = useState("dada");
-  const [description, setDescription] = useState("as");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const fetchData = () => {
     fetchTasks().then((response) => setTasks(response.data));
@@ -36,6 +36,9 @@ const TasksScreen = () => {
 
   const handleCreateTask = () => {
     createTask({ name: title, description: description });
+
+    setTitle("");
+    setDescription("");
   };
 
   useEffect(() => {
