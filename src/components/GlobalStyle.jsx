@@ -25,6 +25,20 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     height: auto;
   }
+
+  button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  input, textarea, button, select, a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
 `;
 
 export default GlobalStyle;

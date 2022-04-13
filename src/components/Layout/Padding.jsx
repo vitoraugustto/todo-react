@@ -26,6 +26,8 @@ const Padding = ({
 };
 
 const StyledPadding = styled.div`
+  display: flex;
+  flex-direction: column;
   padding-top: ${(props) => (props.top ? props.top : 0)};
   padding-right: ${(props) => (props.right ? props.right : 0)};
   padding-bottom: ${(props) => (props.bottom ? props.bottom : 0)};

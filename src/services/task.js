@@ -17,3 +17,16 @@ export const checkTask = ({ id }) => {
     url: `/api/v1/check/${id}`,
   });
 };
+
+export const createTask = () => {
+  return API_INSTANCE({
+    url: "/api/v1/tasks",
+    method: "POST",
+  });
+};
+
+export const deleteTask = ({ id }) => {
+  return API_INSTANCE({
+    url: `/api/v1/deleteOne/${id}`,
+  });
+};

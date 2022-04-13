@@ -3,7 +3,7 @@ import Padding from "./Padding";
 
 const Background = ({ children }) => {
   return (
-    <Box height="100vh" width="100vw">
+    <Box bgColor="#404040" height="100vh" width="100vw">
       {children}
     </Box>
   );

@@ -12,8 +12,9 @@ const Row = ({ style, children, vCenter, hCenter }) => {
 const StyledRow = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: ${(props) => (props.vCenter ? "center" : undefined)};
-  align-items: ${(props) => (props.hCenter ? "center" : undefined)};
+  width: 100%;
+  justify-content: ${(props) => (props.hCenter ? "center" : undefined)};
+  align-items: ${(props) => (props.vCenter ? "center" : undefined)};
 `;
 
 export default Row;
