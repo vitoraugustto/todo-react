@@ -18,10 +18,14 @@ export const checkTask = ({ id }) => {
   });
 };
 
-export const createTask = () => {
+export const createTask = (name, description) => {
   return API_INSTANCE({
     url: "/api/v1/tasks",
     method: "POST",
+    data: {
+      name: name,
+      description: description,
+    },
   });
 };
 

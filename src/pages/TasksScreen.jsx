@@ -6,27 +6,36 @@ import Margin from "../components/Layout/Margin";
 import Text from "../components/Typography/Text";
 import Box from "../components/Layout/Box";
 import Row from "../components/Layout/Row";
-
-import { fetchTasks, checkTask, deleteTask } from "../services/task";
 import Icon from "../components/UI/Icon/Icon";
+
+import {
+  fetchTasks,
+  checkTask,
+  deleteTask,
+  createTask,
+} from "../services/task";
 
 const TasksScreen = () => {
   const [tasks, setTasks] = useState([]);
+  const [title, setTitle] = useState("dada");
+  const [description, setDescription] = useState("as");
 
-  const fetchData = async () => {
-    const response = await fetchTasks();
-
-    setTasks(response.data);
+  const fetchData = () => {
+    fetchTasks().then((response) => setTasks(response.data));
   };
 
   const handleCheckTask = (task) => {
-    checkTask({ id: task._id }).then(() => fetchData());
+    checkTask({ id: task._id }).then(fetchData);
   };
 
   const handleDeleteTask = (e, task) => {
     e.stopPropagation();
 
-    deleteTask({ id: task._id }).then(() => fetchData());
+    deleteTask({ id: task._id }).then(fetchData);
+  };
+
+  const handleCreateTask = () => {
+    createTask({ name: title, description: description });
   };
 
   useEffect(() => {
@@ -37,21 +46,42 @@ const TasksScreen = () => {
     <Background>
       <Padding all="16px">
         <Text align="center">Lista de Tarefas</Text>
-        <Margin top="8px" />
+        <Margin vertical="8px">
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <Margin top="8px" />
+          <input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <Margin top="8px" />
+          <Box
+            hCenter
+            borderRadius="8px"
+            borderColor="white"
+            onClick={handleCreateTask}
+          >
+            <Padding all="8px">
+              <Text>Criar Task</Text>
+            </Padding>
+          </Box>
+        </Margin>
         {tasks.map((task, index) => (
           <Task
             task={task}
+            key={index}
             handleCheckTask={handleCheckTask}
             handleDeleteTask={handleDeleteTask}
-            key={index}
           />
         ))}
       </Padding>
     </Background>
   );
 };
-
-export default TasksScreen;
 
 const Task = ({ task, handleCheckTask, handleDeleteTask }) => {
   return (
@@ -80,3 +110,5 @@ const Task = ({ task, handleCheckTask, handleDeleteTask }) => {
     </Fragment>
   );
 };
+
+export default TasksScreen;

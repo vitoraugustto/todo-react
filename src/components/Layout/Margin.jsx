@@ -26,6 +26,8 @@ const Margin = ({
 };
 
 const StyledMargin = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: ${(props) => (props.top ? props.top : 0)};
   margin-right: ${(props) => (props.right ? props.right : 0)};
   margin-bottom: ${(props) => (props.bottom ? props.bottom : 0)};

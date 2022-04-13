@@ -36,6 +36,15 @@ const GlobalStyle = createGlobalStyle`
     outline: inherit;
   }
 
+  input {
+    border: 0
+  }
+
+  input:focus {
+    outline: none;
+    -webkit-appearance: none;
+}
+
   input, textarea, button, select, a {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
