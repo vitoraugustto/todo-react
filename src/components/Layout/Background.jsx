@@ -1,9 +1,9 @@
+import { COLOR_BLACK_900 } from "../../themes/theme";
 import Box from "./Box";
-import Padding from "./Padding";
 
 const Background = ({ children }) => {
   return (
-    <Box bgColor="#404040" height="100vh" width="100vw">
+    <Box bgColor={COLOR_BLACK_900} height="100vh" width="100vw">
       {children}
     </Box>
   );
