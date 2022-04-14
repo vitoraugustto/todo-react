@@ -35,7 +35,7 @@ const TasksScreen = () => {
   };
 
   const handleCreateTask = () => {
-    createTask({ name: title, description: description });
+    createTask({ name: title, description: description }).then(fetchData);
 
     setTitle("");
     setDescription("");
@@ -73,14 +73,16 @@ const TasksScreen = () => {
             </Padding>
           </Box>
         </Margin>
-        {tasks.map((task, index) => (
-          <Task
-            task={task}
-            key={index}
-            handleCheckTask={handleCheckTask}
-            handleDeleteTask={handleDeleteTask}
-          />
-        ))}
+        <Box style={{ flexDirection: "column-reverse" }}>
+          {tasks.map((task, index) => (
+            <Task
+              task={task}
+              key={index}
+              handleCheckTask={handleCheckTask}
+              handleDeleteTask={handleDeleteTask}
+            />
+          ))}
+        </Box>
       </Padding>
     </Background>
   );
