@@ -9,11 +9,13 @@ const Padding = ({
   bottom,
   left,
   all,
+  flex,
   vertical,
   horizontal,
 }) => {
   return (
     <StyledPadding
+      flex={flex}
       top={top || all || vertical}
       right={right || all || horizontal}
       bottom={bottom || all || vertical}
@@ -26,8 +28,7 @@ const Padding = ({
 };
 
 const StyledPadding = styled.div`
-  display: flex;
-  flex-direction: column;
+  flex: ${(props) => (props.flex ? 1 : undefined)};
   padding-top: ${(props) => (props.top ? props.top : 0)};
   padding-right: ${(props) => (props.right ? props.right : 0)};
   padding-bottom: ${(props) => (props.bottom ? props.bottom : 0)};

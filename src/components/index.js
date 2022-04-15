@@ -2,7 +2,7 @@ import Background from "./Layout/Background";
 import Padding from "./Layout/Padding";
 import Margin from "./Layout/Margin";
 import Box from "./Layout/Box";
-import Row from "./Layout/Box";
+import Row from "./Layout/Row";
 
 import Icon from "./UI/Icon/Icon";
 import Input from "./UI/Input";

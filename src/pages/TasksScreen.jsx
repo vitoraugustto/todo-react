@@ -101,7 +101,6 @@ const Task = ({ task, handleCheckTask, handleDeleteTask }) => {
   return (
     <Fragment>
       <Box
-        flex
         onClick={() => handleCheckTask(task)}
         borderRadius="4px"
         bgColor={COLOR_BLACK_800}
@@ -111,8 +110,8 @@ const Task = ({ task, handleCheckTask, handleDeleteTask }) => {
             : `4px solid ${COLOR_RED_600}`,
         }}
       >
-        <Row vCenter>
-          <Padding all="8px">
+        <Row style={{ justifyContent: "space-between" }} vCenter>
+          <Padding flex all="8px">
             <Text size="16px" font={TITILLIUM}>
               {task.name}
             </Text>
