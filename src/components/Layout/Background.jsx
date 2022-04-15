@@ -6,7 +6,7 @@ import { COLOR_BLACK_900 } from "../../themes/theme";
 
 const Background = ({ children }) => {
   return (
-    <Box bgColor={COLOR_BLACK_900} height="100vh" width="100vw">
+    <Box bgColor={COLOR_BLACK_900} height="100%" width="100%">
       {children}
     </Box>
   );

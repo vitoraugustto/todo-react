@@ -111,7 +111,7 @@ const Task = ({ task, handleCheckTask, handleDeleteTask }) => {
             : `4px solid ${COLOR_RED_600}`,
         }}
       >
-        <Row style={{ justifyContent: "space-between" }} vCenter>
+        <Row vCenter>
           <Padding all="8px">
             <Text size="16px" font={TITILLIUM}>
               {task.name}

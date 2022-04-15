@@ -52,7 +52,7 @@ const Box = ({
 const StyledBox = styled.div`
   display: flex;
   flex-direction: column;
-  word-break: break-all;
+  word-break: break-word;
   justify-content: ${(props) => (props.vCenter ? "center" : undefined)};
   align-items: ${(props) => (props.hCenter ? "center" : undefined)};
   background-color: ${(props) =>

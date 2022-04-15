@@ -12,7 +12,7 @@ const Row = ({ style, children, vCenter, hCenter }) => {
 const StyledRow = styled.div`
   display: flex;
   flex-direction: row;
-  word-wrap: break-word;
+  word-break: break-word;
   width: 100%;
   justify-content: ${(props) => (props.hCenter ? "center" : undefined)};
   align-items: ${(props) => (props.vCenter ? "center" : undefined)};
