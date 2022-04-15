@@ -1,15 +1,15 @@
 import React, { Fragment, useEffect, useState } from "react";
 
-import Background from "../components/Layout/Background";
-import Padding from "../components/Layout/Padding";
-import Margin from "../components/Layout/Margin";
-import Box from "../components/Layout/Box";
-import Row from "../components/Layout/Row";
-
-import Text from "../components/Typography/Text";
-
-import Icon from "../components/UI/Icon/Icon";
-import Input from "../components/UI/Input";
+import {
+  Background,
+  Box,
+  Input,
+  Margin,
+  Padding,
+  Text,
+  Row,
+  Button,
+} from "../components";
 
 import {
   fetchTasks,
@@ -17,7 +17,13 @@ import {
   deleteTask,
   createTask,
 } from "../services/task";
-import { COLOR_BLACK_700, COLOR_BLACK_800, TITILLIUM } from "../themes/theme";
+
+import {
+  COLOR_BLACK_800,
+  COLOR_GREEN_500,
+  COLOR_RED_600,
+  TITILLIUM,
+} from "../themes/theme";
 
 const TasksScreen = () => {
   const [tasks, setTasks] = useState([]);
@@ -45,6 +51,10 @@ const TasksScreen = () => {
     setDescription("");
   };
 
+  const handleOnKeyUp = (e) => {
+    if (e.key === "Enter" && title) handleCreateTask();
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -57,30 +67,20 @@ const TasksScreen = () => {
         </Text>
         <Margin vertical="8px">
           <Input
-            onKeyUp={(e) => (e.key === "Enter" ? handleCreateTask() : null)}
+            onKeyUp={handleOnKeyUp}
             placeholder="Digite um título..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <Margin top="8px" />
           <Input
+            onKeyUp={handleOnKeyUp}
             placeholder="Digite uma descrição..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
           <Margin top="12px" />
-          <Box
-            hCenter
-            borderRadius="8px"
-            borderColor={COLOR_BLACK_700}
-            onClick={handleCreateTask}
-          >
-            <Padding all="8px">
-              <Text font={TITILLIUM} spacing="1.5px">
-                Criar Tarefa
-              </Text>
-            </Padding>
-          </Box>
+          <Button onClick={handleCreateTask}>Criar tarefa</Button>
         </Margin>
         <Box style={{ flexDirection: "column-reverse" }}>
           {tasks.map((task, index) => (
@@ -106,23 +106,22 @@ const Task = ({ task, handleCheckTask, handleDeleteTask }) => {
         borderRadius="4px"
         bgColor={COLOR_BLACK_800}
         style={{
-          borderLeft: task.check ? "4px solid lightgreen" : "4px solid red",
+          borderLeft: task.check
+            ? `4px solid ${COLOR_GREEN_500}`
+            : `4px solid ${COLOR_RED_600}`,
         }}
       >
         <Row style={{ justifyContent: "space-between" }} vCenter>
           <Padding all="8px">
-            <Text font={TITILLIUM}>{task.name}</Text>
+            <Text size="16px" font={TITILLIUM}>
+              {task.name}
+            </Text>
             <Padding horizontal="8px">
-              <Text font={TITILLIUM} lineHeight="12px" size="10px">
+              <Text font={TITILLIUM} lineHeight="12px" size="14px">
                 {task.description}
               </Text>
             </Padding>
           </Padding>
-          <Margin right="20px">
-            <Box onClick={(e) => handleDeleteTask(e, task)}>
-              <Icon iconName="trash-outline--white" size="16px" />
-            </Box>
-          </Margin>
         </Row>
       </Box>
       <Margin top="8px" />
