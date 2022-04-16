@@ -9,6 +9,8 @@ import {
   Text,
   Row,
   Button,
+  Loading,
+  Chevron,
 } from "../components";
 
 import {
@@ -119,6 +121,8 @@ const Task = ({ task, handleCheckTask, handleDeleteTask }) => {
               <Text font={TITILLIUM} lineHeight="12px" size="14px">
                 {task.description}
               </Text>
+              <Chevron color="teal" />
+              <Loading />
             </Padding>
           </Padding>
         </Row>

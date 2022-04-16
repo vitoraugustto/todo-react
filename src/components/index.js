@@ -6,10 +6,13 @@ import Row from "./Layout/Row";
 
 import Icon from "./UI/Icon/Icon";
 import Input from "./UI/Input";
-import Button from "./UI/Button/Button";
+import Button from "./UI/Button";
 
 import Text from "./Typography/Text";
 import { Title, SubTitle } from "./Typography/Headings";
+
+import Chevron from "./Chevron/Chevron";
+import Loading from "./Loading/Loading";
 
 export {
   Background,
@@ -23,4 +26,6 @@ export {
   Title,
   SubTitle,
   Button,
+  Chevron,
+  Loading,
 };

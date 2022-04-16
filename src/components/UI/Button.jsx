@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { COLOR_WHITE, TITILLIUM } from "../../../themes/theme";
+import { COLOR_WHITE, TITILLIUM } from "../../themes/theme";
 
 const Button = ({
   color,
