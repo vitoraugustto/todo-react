@@ -121,8 +121,6 @@ const Task = ({ task, handleCheckTask, handleDeleteTask }) => {
               <Text font={TITILLIUM} lineHeight="12px" size="14px">
                 {task.description}
               </Text>
-              <Chevron color="teal" />
-              <Loading />
             </Padding>
           </Padding>
         </Row>
