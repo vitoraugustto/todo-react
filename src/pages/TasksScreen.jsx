@@ -12,6 +12,7 @@ import {
   Link,
   Select,
   Option,
+  Loading,
 } from "../components";
 
 import {
@@ -31,14 +32,16 @@ import {
 import { formatDate } from "../utils";
 
 const TasksScreen = () => {
+  const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState();
 
   const fetchData = () => {
+    setLoading(true);
     fetchTasks({}).then((response) => {
-      console.log(response);
+      setLoading(false);
       setTasks(response.data);
     });
   };
@@ -111,18 +114,24 @@ const TasksScreen = () => {
           </Button>
         </Margin>
         <Box style={{ flexDirection: "column-reverse" }}>
-          {tasks.map((task, index) => (
-            <Fragment key={index}>
-              <Link to="/todo-react/task" state={{ task: task }}>
-                <Task
-                  task={task}
-                  handleCheckTask={handleCheckTask}
-                  handleDeleteTask={handleDeleteTask}
-                />
-              </Link>
-              <Margin top="8px" />
-            </Fragment>
-          ))}
+          {loading ? (
+            <Box hCenter>
+              <Loading />
+            </Box>
+          ) : (
+            tasks.map((task, index) => (
+              <Fragment key={index}>
+                <Link to="/todo-react/task" state={{ task: task }}>
+                  <Task
+                    task={task}
+                    handleCheckTask={handleCheckTask}
+                    handleDeleteTask={handleDeleteTask}
+                  />
+                </Link>
+                <Margin top="8px" />
+              </Fragment>
+            ))
+          )}
         </Box>
       </Padding>
     </Background>

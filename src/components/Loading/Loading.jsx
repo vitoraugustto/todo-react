@@ -30,7 +30,7 @@ const StyledSVG = styled(SVG)`
   stroke: ${(props) => (props.color ? props.color : COLOR_BLUE_300)};
   height: ${(props) => (props.size ? props.size : "24px")};
   width: ${(props) => (props.size ? props.size : "24px")};
-  animation: ${rotation} 0.7s linear infinite;
+  animation: ${rotation} 0.5s linear infinite;
 `;
 
 export default Loading;
