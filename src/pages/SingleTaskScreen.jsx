@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import {
   Background,
   Box,
+  Button,
   Chevron,
   Link,
   Margin,
@@ -14,6 +15,7 @@ import {
   COLOR_BLACK_800,
   COLOR_GREEN_500,
   COLOR_RED_600,
+  COLOR_WHITE,
 } from "../themes/theme";
 
 const SingleTaskScreen = () => {
@@ -21,22 +23,8 @@ const SingleTaskScreen = () => {
   const { task } = location.state;
 
   return (
-    <Background>
+    <Background style={{ justifyContent: "center" }}>
       <Padding all="16px">
-        <Link
-          style={{
-            display: "flex",
-            width: "max-content",
-          }}
-          to="/todo-react"
-        >
-          <Row>
-            <Chevron position="left" />
-            <Text>Voltar</Text>
-          </Row>
-        </Link>
-        <Margin top="20px" />
-
         <Box
           style={{
             borderLeft: task.check
@@ -56,6 +44,16 @@ const SingleTaskScreen = () => {
             <Text size="10px">Descrição:</Text>
             <Text size="14px">{task.description}</Text>
           </Padding>
+        </Box>
+
+        <Box>
+          <Link to="/todo-react">
+            <Button>
+              <Chevron color={COLOR_WHITE} position="left" />
+              <Margin right="10px" />
+              Voltar
+            </Button>
+          </Link>
         </Box>
       </Padding>
     </Background>

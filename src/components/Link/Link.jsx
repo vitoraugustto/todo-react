@@ -13,6 +13,8 @@ const Link = ({ to = "", state, style, children }) => {
 
 const StyledLink = styled(RouterLink)`
   text-decoration: none;
+  display: inherit;
+  flex-direction: inherit;
 `;
 
 export default Link;

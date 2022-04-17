@@ -28,7 +28,8 @@ const Padding = ({
 };
 
 const StyledPadding = styled.div`
-  flex: ${(props) => (props.flex ? 1 : undefined)};
+  display: inherit;
+  flex-direction: inherit;
   padding-top: ${(props) => (props.top ? props.top : 0)};
   padding-right: ${(props) => (props.right ? props.right : 0)};
   padding-bottom: ${(props) => (props.bottom ? props.bottom : 0)};

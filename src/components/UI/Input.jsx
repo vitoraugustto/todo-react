@@ -22,10 +22,10 @@ const Input = ({ onChange, onKeyUp, value, placeholder, style }) => {
 const StyledInput = styled.input`
   background-color: transparent;
   color: ${COLOR_WHITE};
-  border-bottom: 2px solid ${COLOR_BLACK_800};
+  border-bottom: 1px solid ${COLOR_BLACK_800};
   padding: 8px 10px;
   &:focus {
-    border-bottom: 2px solid ${COLOR_BLACK_700};
+    border-bottom: 1px solid ${COLOR_WHITE};
   }
   transition: 0.2s;
 `;
