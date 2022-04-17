@@ -8,8 +8,8 @@ export const formatDate = (d) => {
   return `${day + "/" + month + "/" + year}`;
 };
 
-export const formatTime = (date) => {
-  const time = date.split("T")[1].split(".")[0];
+export const formatTime = (d) => {
+  const time = d.split("T")[1].split(".")[0];
 
   const hours = time.split(":")[0] - 3;
   const minutes = time.split(":")[1];
