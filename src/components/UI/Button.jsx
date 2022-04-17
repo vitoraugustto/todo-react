@@ -9,10 +9,12 @@ const Button = ({
   rounded,
   borderColor,
   onClick,
+  disabled,
   children,
 }) => {
   return (
     <StyledButton
+      disabled={disabled}
       color={color}
       bgColor={bgColor}
       rounded={rounded}

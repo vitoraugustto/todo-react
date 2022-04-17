@@ -25,8 +25,10 @@ import {
   COLOR_BLACK_800,
   COLOR_GREEN_500,
   COLOR_RED_600,
+  COLOR_GRAY_300,
   TITILLIUM,
 } from "../themes/theme";
+import { formatDate } from "../utils";
 
 const TasksScreen = () => {
   const [tasks, setTasks] = useState([]);
@@ -36,6 +38,7 @@ const TasksScreen = () => {
 
   const fetchData = () => {
     fetchTasks({}).then((response) => {
+      console.log(response);
       setTasks(response.data);
     });
   };
@@ -103,7 +106,9 @@ const TasksScreen = () => {
             ))}
           />
           <Margin top="12px" />
-          <Button onClick={handleCreateTask}>Criar tarefa</Button>
+          <Button disabled={!category || !title} onClick={handleCreateTask}>
+            Criar tarefa
+          </Button>
         </Margin>
         <Box style={{ flexDirection: "column-reverse" }}>
           {tasks.map((task, index) => (
@@ -135,17 +140,21 @@ const Task = ({ task }) => {
           : `4px solid ${COLOR_RED_600}`,
       }}
     >
-      <Row style={{ justifyContent: "space-between" }} vCenter>
+      <Row>
         <Padding flex all="8px">
           <Text size="8px">{task.category}</Text>
-          <Text size="16px" font={TITILLIUM}>
+          <Text
+            color={COLOR_GRAY_300}
+            lineHeight="18px"
+            size="16px"
+            font={TITILLIUM}
+          >
             {task.name}
           </Text>
-          <Padding horizontal="8px">
-            <Text font={TITILLIUM} lineHeight="12px" size="14px">
-              {task.description}
-            </Text>
-          </Padding>
+          <Margin top="8px" />
+          <Text font={TITILLIUM} lineHeight="12px" size="8px">
+            Criado em: {task.date}
+          </Text>
         </Padding>
       </Row>
     </Box>
