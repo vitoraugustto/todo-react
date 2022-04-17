@@ -16,6 +16,7 @@ const Select = ({ placeholder, value, onChange, options }) => {
 
 const StyledSelect = styled.select`
   background-color: transparent;
+  font-size: 20px;
   color: ${COLOR_WHITE};
   border: 0;
   border-bottom: 1px solid ${COLOR_BLACK_800};

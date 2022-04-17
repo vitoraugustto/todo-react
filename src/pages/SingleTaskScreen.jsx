@@ -16,6 +16,7 @@ import {
   COLOR_GREEN_500,
   COLOR_RED_600,
   COLOR_WHITE,
+  TITILLIUM,
 } from "../themes/theme";
 
 const SingleTaskScreen = () => {
@@ -35,14 +36,20 @@ const SingleTaskScreen = () => {
           borderRadius="4px"
         >
           <Padding all="8px">
-            <Text size="10px">Categoria:</Text>
-            <Text size="14px">{task.category}</Text>
-            <Margin top="16px" />
-            <Text size="10px">Título:</Text>
-            <Text size="18px">{task.name}</Text>
-            <Margin top="4px" />
-            <Text size="10px">Descrição:</Text>
-            <Text size="14px">{task.description}</Text>
+            <Text size="16px">Categoria:</Text>
+            <Text size="24px" color={COLOR_RED_600} font={TITILLIUM}>
+              {task.category}
+            </Text>
+            <Margin top="20px" />
+            <Text size="16px">Título:</Text>
+            <Text size="28px" font={TITILLIUM}>
+              {task.name}
+            </Text>
+            <Margin top="8px" />
+            <Text size="16px">Descrição:</Text>
+            <Text size="24px" font={TITILLIUM}>
+              {task.description}
+            </Text>
           </Padding>
         </Box>
 

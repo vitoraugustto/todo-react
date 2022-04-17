@@ -105,7 +105,7 @@ const Task = ({ task }) => {
       }}
     >
       <Padding all="8px">
-        <Text size="18px" color={COLOR_RED_600}>
+        <Text size="18px" color={COLOR_RED_600} font={TITILLIUM}>
           {task.category}
         </Text>
         <Text color={COLOR_GRAY_300} size="24px" font={TITILLIUM}>

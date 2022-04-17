@@ -20,6 +20,7 @@ const Input = ({ onChange, onKeyUp, value, placeholder, style }) => {
 };
 
 const StyledInput = styled.input`
+  font-size: 20px;
   background-color: transparent;
   color: ${COLOR_WHITE};
   border-bottom: 1px solid ${COLOR_BLACK_800};
