@@ -4,14 +4,9 @@ import Box from "./Box";
 
 import { COLOR_BLACK_900 } from "../../themes/theme";
 
-const Background = ({ children }) => {
+const Background = ({ style, children }) => {
   return (
-    <Box
-      style={{
-        minHeight: "100vh",
-      }}
-      bgColor={COLOR_BLACK_900}
-    >
+    <Box style={{ ...style, minHeight: "100vh" }} bgColor={COLOR_BLACK_900}>
       {children}
     </Box>
   );

@@ -1,8 +1,8 @@
 import { API_INSTANCE } from "./axios";
 
-export const fetchTasks = () => {
+export const fetchTasks = ({ limit = 99 }) => {
   return API_INSTANCE({
-    url: "/api/v1/tasks",
+    url: `/api/v1/tasks?limit=${limit}`,
   });
 };
 
@@ -18,13 +18,14 @@ export const checkTask = ({ id }) => {
   });
 };
 
-export const createTask = ({ name, description }) => {
+export const createTask = ({ name, description, category }) => {
   return API_INSTANCE({
     url: "/api/v1/tasks",
     method: "POST",
     data: {
       name: name,
       description: description,
+      category: category,
     },
   });
 };

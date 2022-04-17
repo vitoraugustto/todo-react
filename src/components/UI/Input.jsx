@@ -20,14 +20,14 @@ const Input = ({ onChange, onKeyUp, value, placeholder, style }) => {
 };
 
 const StyledInput = styled.input`
-  background-color: ${COLOR_BLACK_800};
+  background-color: transparent;
   color: ${COLOR_WHITE};
-  border: 1px solid ${COLOR_BLACK_800};
-  border-radius: 8px;
+  border-bottom: 2px solid ${COLOR_BLACK_800};
   padding: 8px 10px;
   &:focus {
-    border: 1px solid ${COLOR_BLACK_700};
+    border-bottom: 2px solid ${COLOR_BLACK_700};
   }
+  transition: 0.2s;
 `;
 
 export default Input;

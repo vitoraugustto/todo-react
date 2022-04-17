@@ -9,8 +9,9 @@ import {
   Text,
   Row,
   Button,
-  Loading,
-  Chevron,
+  Link,
+  Select,
+  Option,
 } from "../components";
 
 import {
@@ -31,9 +32,12 @@ const TasksScreen = () => {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState();
 
   const fetchData = () => {
-    fetchTasks().then((response) => setTasks(response.data));
+    fetchTasks({}).then((response) => {
+      setTasks(response.data);
+    });
   };
 
   const handleCheckTask = (task) => {
@@ -47,7 +51,11 @@ const TasksScreen = () => {
   };
 
   const handleCreateTask = () => {
-    createTask({ name: title, description: description }).then(fetchData);
+    createTask({
+      name: title,
+      description: description,
+      category: category,
+    }).then(fetchData);
 
     setTitle("");
     setDescription("");
@@ -55,6 +63,10 @@ const TasksScreen = () => {
 
   const handleOnKeyUp = (e) => {
     if (e.key === "Enter" && title) handleCreateTask();
+  };
+
+  const handleSelectChange = (e) => {
+    setCategory(e.target.value);
   };
 
   useEffect(() => {
@@ -81,17 +93,30 @@ const TasksScreen = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+          <Margin top="8px" />
+          <Select
+            placeholder="Selecione uma categoria"
+            onChange={(e) => handleSelectChange(e)}
+            value={category}
+            options={OPTIONS.map((option, index) => (
+              <Option text={option.text} value={option.value} key={index} />
+            ))}
+          />
           <Margin top="12px" />
           <Button onClick={handleCreateTask}>Criar tarefa</Button>
         </Margin>
         <Box style={{ flexDirection: "column-reverse" }}>
           {tasks.map((task, index) => (
-            <Task
-              task={task}
-              key={index}
-              handleCheckTask={handleCheckTask}
-              handleDeleteTask={handleDeleteTask}
-            />
+            <Fragment key={index}>
+              <Link to="/todo-react/task" state={{ task: task }}>
+                <Task
+                  task={task}
+                  handleCheckTask={handleCheckTask}
+                  handleDeleteTask={handleDeleteTask}
+                />
+              </Link>
+              <Margin top="8px" />
+            </Fragment>
           ))}
         </Box>
       </Padding>
@@ -99,35 +124,55 @@ const TasksScreen = () => {
   );
 };
 
-const Task = ({ task, handleCheckTask, handleDeleteTask }) => {
+const Task = ({ task }) => {
   return (
-    <Fragment>
-      <Box
-        onClick={() => handleCheckTask(task)}
-        borderRadius="4px"
-        bgColor={COLOR_BLACK_800}
-        style={{
-          borderLeft: task.check
-            ? `4px solid ${COLOR_GREEN_500}`
-            : `4px solid ${COLOR_RED_600}`,
-        }}
-      >
-        <Row style={{ justifyContent: "space-between" }} vCenter>
-          <Padding flex all="8px">
-            <Text size="16px" font={TITILLIUM}>
-              {task.name}
+    <Box
+      borderRadius="4px"
+      bgColor={COLOR_BLACK_800}
+      style={{
+        borderLeft: task.check
+          ? `4px solid ${COLOR_GREEN_500}`
+          : `4px solid ${COLOR_RED_600}`,
+      }}
+    >
+      <Row style={{ justifyContent: "space-between" }} vCenter>
+        <Padding flex all="8px">
+          <Text size="8px">{task.category}</Text>
+          <Text size="16px" font={TITILLIUM}>
+            {task.name}
+          </Text>
+          <Padding horizontal="8px">
+            <Text font={TITILLIUM} lineHeight="12px" size="14px">
+              {task.description}
             </Text>
-            <Padding horizontal="8px">
-              <Text font={TITILLIUM} lineHeight="12px" size="14px">
-                {task.description}
-              </Text>
-            </Padding>
           </Padding>
-        </Row>
-      </Box>
-      <Margin top="8px" />
-    </Fragment>
+        </Padding>
+      </Row>
+    </Box>
   );
 };
+
+const OPTIONS = [
+  {
+    value: "programming",
+    text: "Programação",
+  },
+  {
+    value: "games",
+    text: "Jogos",
+  },
+  {
+    value: "finance",
+    text: "Finanças",
+  },
+  {
+    value: "leisure",
+    text: "Lazer",
+  },
+  {
+    value: "daybyday",
+    text: "Dia a dia",
+  },
+];
 
 export default TasksScreen;

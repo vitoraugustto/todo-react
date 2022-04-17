@@ -12,6 +12,7 @@ const Text = ({
   font,
   lineHeight,
   spacing,
+  style,
 }) => {
   return (
     <StyledText
@@ -22,6 +23,7 @@ const Text = ({
       size={size}
       lineHeight={lineHeight}
       spacing={spacing}
+      style={{ ...style }}
     >
       {children}
     </StyledText>

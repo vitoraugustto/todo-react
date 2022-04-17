@@ -37,13 +37,19 @@ const GlobalStyle = createGlobalStyle`
   }
 
   input {
-    border: 0
+    border: 0;
   }
 
-  input:focus {
-    outline: none;
+  select { 
     -webkit-appearance: none;
-}
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+
+  input:focus, textarea:focus, select:focus{
+    outline: none;
+  }
 
   input, textarea, button, select, a {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
