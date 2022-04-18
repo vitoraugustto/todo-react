@@ -1,4 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { createTask } from "../services/task";
+
+import { ReactComponent as AddCircle } from "../assets/svg/add-circle.svg";
+import { ReactComponent as Check } from "../assets/svg/check.svg";
 
 import {
   Background,
@@ -12,19 +18,22 @@ import {
   Option,
   Padding,
   Select,
+  Text,
 } from "../components";
 
-import { ReactComponent as AddCircle } from "../assets/svg/add-circle.svg";
-
-import { createTask } from "../services/task";
-
-import { COLOR_WHITE } from "../themes/theme";
+import { COLOR_WHITE, TITILLIUM } from "../themes/theme";
 
 const CreateTaskScreen = () => {
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState();
   const [loading, setLoading] = useState(false);
+  const [created, setCreated] = useState(false);
+  const [counter, setCounter] = useState(3);
+
+  const disableButton = !category || !title || created;
 
   const handleCreateTask = () => {
     setLoading(true);
@@ -32,10 +41,11 @@ const CreateTaskScreen = () => {
       name: title,
       description: description,
       category: category,
-    }).then(setLoading(false));
-
-    setTitle("");
-    setDescription("");
+    }).then(() => {
+      setLoading(false);
+      setCreated(true);
+      clearFields();
+    });
   };
 
   const handleOnKeyUp = (e) => {
@@ -45,6 +55,23 @@ const CreateTaskScreen = () => {
   const handleSelectChange = (e) => {
     setCategory(e.target.value);
   };
+
+  const clearFields = () => {
+    setTitle("");
+    setDescription("");
+    setCategory("");
+  };
+
+  useEffect(() => {
+    if (created)
+      setInterval(() => {
+        setCounter((counter) => counter - 1);
+      }, 1000);
+  }, [created]);
+
+  useEffect(() => {
+    if (counter === 0) navigate("/todo-react");
+  }, [counter]);
 
   return (
     <Background style={{ justifyContent: "center" }}>
@@ -74,21 +101,20 @@ const CreateTaskScreen = () => {
           />
           <Margin top="12px" />
           <Button
+            height="56px"
             borderColor={COLOR_WHITE}
-            disabled={!category || !title}
+            disabled={disableButton}
             onClick={handleCreateTask}
           >
-            {loading ? (
-              <Loading color={COLOR_WHITE} />
+            {!created ? (
+              <DefaultContent loading={loading} />
             ) : (
-              <AddCircle fill={COLOR_WHITE} />
+              <CreatedTaskContent counter={counter} />
             )}
-            <Margin right="8px" />
-            Criar tarefa
           </Button>
           <Margin top="12px" />
           <Link to="/todo-react">
-            <Button disabled={!category || !title} onClick={handleCreateTask}>
+            <Button>
               <Chevron color={COLOR_WHITE} position="left" />
               <Margin right="8px" />
               Voltar
@@ -97,6 +123,30 @@ const CreateTaskScreen = () => {
         </Box>
       </Padding>
     </Background>
+  );
+};
+
+const DefaultContent = ({ loading }) => {
+  return (
+    <>
+      {loading ? (
+        <Loading color={COLOR_WHITE} />
+      ) : (
+        <AddCircle fill={COLOR_WHITE} />
+      )}
+      <Margin right="8px" />
+      Criar tarefa
+    </>
+  );
+};
+
+const CreatedTaskContent = ({ counter }) => {
+  return (
+    <>
+      <Check fill={COLOR_WHITE} />
+      <Margin right="8px" />
+      <Text font={TITILLIUM}>Tarefa criada! Redirecionando em {counter}</Text>
+    </>
   );
 };
 

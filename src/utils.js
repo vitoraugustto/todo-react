@@ -11,7 +11,7 @@ export const formatDate = (d) => {
 export const formatTime = (d) => {
   const time = d.split("T")[1].split(".")[0];
 
-  const hours = time.split(":")[0] - 3;
+  const hours = time.split(":")[0]; //TODO: Subtract 3 hours
   const minutes = time.split(":")[1];
   return `${hours + ":" + minutes}`;
 };

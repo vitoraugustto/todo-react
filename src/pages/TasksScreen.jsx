@@ -93,6 +93,7 @@ const TasksScreen = () => {
   );
 };
 
+//TODO: Adjust date
 const Task = ({ task }) => {
   return (
     <Box

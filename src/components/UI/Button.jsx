@@ -5,6 +5,7 @@ import { COLOR_WHITE, TITILLIUM } from "../../themes/theme";
 import Row from "../Layout/Row";
 
 const Button = ({
+  height,
   color,
   bgColor,
   rounded,
@@ -16,6 +17,7 @@ const Button = ({
 }) => {
   return (
     <StyledButton
+      height={height}
       fontSize={fontSize}
       disabled={disabled}
       color={color}
@@ -32,6 +34,7 @@ const Button = ({
 };
 
 const StyledButton = styled.button`
+  height: ${(props) => (props.height ? props.height : "auto")};
   border: ${(props) =>
     props.borderColor ? `1px solid ${props.borderColor}` : "none"};
   border-radius: ${(props) =>
