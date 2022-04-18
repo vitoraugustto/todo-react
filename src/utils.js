@@ -1,17 +1,17 @@
+const pad = (value) => {
+  return value < 10 ? "0" + value : value;
+};
+
 export const formatDate = (d) => {
-  const date = d.split("T")[0];
+  const date = new Date(d);
 
-  const year = date.split("-")[0];
-  const month = date.split("-")[1];
-  const day = date.split("-")[2];
-
-  return `${day + "/" + month + "/" + year}`;
+  return `${
+    date.getDate() + "/" + pad(date.getMonth()) + "/" + date.getFullYear()
+  }`;
 };
 
 export const formatTime = (d) => {
-  const time = d.split("T")[1].split(".")[0];
+  const date = new Date(d);
 
-  const hours = time.split(":")[0]; //TODO: Subtract 3 hours
-  const minutes = time.split(":")[1];
-  return `${hours + ":" + minutes}`;
+  return `${pad(date.getHours()) + ":" + pad(date.getMinutes())}`;
 };
