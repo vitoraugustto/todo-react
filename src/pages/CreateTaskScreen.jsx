@@ -96,7 +96,7 @@ const CreateTaskScreen = () => {
             onChange={(e) => handleSelectChange(e)}
             value={category}
             options={OPTIONS.map((option, index) => (
-              <Option text={option.text} value={option.value} key={index} />
+              <Option text={option.text} value={option.text} key={index} />
             ))}
           />
           <Margin top="12px" />

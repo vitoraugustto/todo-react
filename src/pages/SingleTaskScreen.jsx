@@ -18,6 +18,7 @@ import {
   COLOR_WHITE,
   TITILLIUM,
 } from "../themes/theme";
+import { formatDate, formatTime } from "../utils";
 
 const SingleTaskScreen = () => {
   const location = useLocation();
@@ -37,22 +38,31 @@ const SingleTaskScreen = () => {
         >
           <Padding all="8px">
             <Text size="16px">Categoria:</Text>
-            <Text size="24px" color={COLOR_RED_600} font={TITILLIUM}>
+            <Text
+              size="20px"
+              color={COLOR_RED_600}
+              weight="bold"
+              font={TITILLIUM}
+            >
               {task.category}
             </Text>
             <Margin top="20px" />
             <Text size="16px">Título:</Text>
-            <Text size="28px" font={TITILLIUM}>
+            <Text size="28px" weight="bold" font={TITILLIUM}>
               {task.name}
             </Text>
             <Margin top="8px" />
             <Text size="16px">Descrição:</Text>
-            <Text size="24px" font={TITILLIUM}>
+            <Margin top="8px" />
+            <Text size="20px" lineHeight="24px" font={TITILLIUM}>
               {task.description}
+            </Text>
+            <Margin top="16px" />
+            <Text size="16px" font={TITILLIUM}>
+              Criado em {formatDate(task.date)} às {formatTime(task.date)}
             </Text>
           </Padding>
         </Box>
-
         <Box>
           <Link to="/todo-react">
             <Button>
