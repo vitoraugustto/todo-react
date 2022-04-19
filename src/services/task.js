@@ -35,3 +35,15 @@ export const deleteTask = ({ id }) => {
     url: `/api/v1/deleteOne/${id}`,
   });
 };
+
+export const updateTask = ({ id, name, description, category }) => {
+  return API_INSTANCE({
+    url: `/api/v1/updateOne/${id}`,
+    method: "POST",
+    data: {
+      name: name,
+      description: description,
+      category: category,
+    },
+  });
+};

@@ -79,7 +79,7 @@ const TasksScreen = () => {
           ) : (
             tasks.map((task, index) => (
               <Fragment key={index}>
-                <Link to="/todo-react/task" state={{ task: task }}>
+                <Link to="/todo-react/task" state={{ singleTask: task }}>
                   <Task
                     task={task}
                     handleCheckTask={handleCheckTask}

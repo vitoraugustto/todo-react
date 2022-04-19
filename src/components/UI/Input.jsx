@@ -1,26 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 
-import {
-  COLOR_BLACK_700,
-  COLOR_BLACK_800,
-  COLOR_WHITE,
-} from "../../themes/theme";
+import { COLOR_BLACK_800, COLOR_WHITE, TITILLIUM } from "../../themes/theme";
 
-const Input = ({ onChange, onKeyUp, value, placeholder, style }) => {
+const Input = ({
+  onChange,
+  onBlur,
+  onKeyUp,
+  fontSize,
+  value,
+  placeholder,
+  style,
+}) => {
   return (
     <StyledInput
+      autoFocus
+      onBlur={onBlur}
       placeholder={placeholder}
       onChange={onChange}
       onKeyUp={onKeyUp}
       value={value}
+      fontSize={fontSize}
       style={{ ...style }}
     />
   );
 };
 
 const StyledInput = styled.input`
-  font-size: 20px;
+  font-family: ${TITILLIUM};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : "20px")};
   background-color: transparent;
   color: ${COLOR_WHITE};
   border-bottom: 1px solid ${COLOR_BLACK_800};
