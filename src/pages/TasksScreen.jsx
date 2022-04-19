@@ -21,6 +21,9 @@ import {
   COLOR_RED_600,
   COLOR_GRAY_300,
   COLOR_WHITE,
+  COLOR_BLUE_300,
+  COLOR_YELLOW_500,
+  COLOR_VIOLET_400,
   TITILLIUM,
 } from "../themes/theme";
 import { formatDate, formatTime } from "../utils";
@@ -100,14 +103,16 @@ const Task = ({ task }) => {
       borderRadius="4px"
       bgColor={COLOR_BLACK_800}
       style={{
-        borderLeft: task.check
-          ? `4px solid ${COLOR_GREEN_500}`
-          : `4px solid ${COLOR_RED_600}`,
+        borderLeft: `4px solid ${CATEGORIES[task.category].color}`,
       }}
     >
       <Padding all="8px">
-        <Text size="16px" color={COLOR_RED_600} font={TITILLIUM}>
-          {task.category}
+        <Text
+          size="16px"
+          color={CATEGORIES[task.category].color}
+          font={TITILLIUM}
+        >
+          {CATEGORIES[task.category].label}
         </Text>
         <Text color={COLOR_GRAY_300} size="24px" font={TITILLIUM}>
           {task.name}
@@ -119,6 +124,29 @@ const Task = ({ task }) => {
       </Padding>
     </Box>
   );
+};
+
+export const CATEGORIES = {
+  programming: {
+    label: "Programação",
+    color: COLOR_BLUE_300,
+  },
+  games: {
+    label: "Jogos",
+    color: COLOR_RED_600,
+  },
+  finance: {
+    label: "Finanças",
+    color: COLOR_YELLOW_500,
+  },
+  leisure: {
+    label: "Lazer",
+    color: COLOR_GREEN_500,
+  },
+  daybyday: {
+    label: "Dia a dia",
+    color: COLOR_VIOLET_400,
+  },
 };
 
 export default TasksScreen;

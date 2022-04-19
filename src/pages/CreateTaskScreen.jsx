@@ -95,8 +95,12 @@ const CreateTaskScreen = () => {
             placeholder="Selecione uma categoria"
             onChange={(e) => handleSelectChange(e)}
             value={category}
-            options={OPTIONS.map((option, index) => (
-              <Option text={option.text} value={option.text} key={index} />
+            options={CATEGORIES.map((category, index) => (
+              <Option
+                text={category.label}
+                value={category.value}
+                key={index}
+              />
             ))}
           />
           <Margin top="12px" />
@@ -150,26 +154,26 @@ const CreatedTaskContent = ({ counter }) => {
   );
 };
 
-const OPTIONS = [
+const CATEGORIES = [
   {
     value: "programming",
-    text: "Programação",
+    label: "Programação",
   },
   {
     value: "games",
-    text: "Jogos",
+    label: "Jogos",
   },
   {
     value: "finance",
-    text: "Finanças",
+    label: "Finanças",
   },
   {
     value: "leisure",
-    text: "Lazer",
+    label: "Lazer",
   },
   {
     value: "daybyday",
-    text: "Dia a dia",
+    label: "Dia a dia",
   },
 ];
 
