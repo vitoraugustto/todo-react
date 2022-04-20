@@ -20,7 +20,7 @@ export const checkTask = ({ id }) => {
 
 export const createTask = ({ name, description, category }) => {
   return API_INSTANCE({
-    url: "/api/v1/tasks",
+    url: `/api/v1/tasks`,
     method: "POST",
     data: {
       name: name,
