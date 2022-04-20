@@ -44,21 +44,19 @@ const SingleTaskScreen = () => {
     setEditTitle(false);
   };
 
-  const handleOnBlur = () => {
+  const handleUpdateTask = ({ key, value }) => {
+    if (value) {
+      setLoading(true);
+      updateTask({ id: task._id, [key]: value }).then((res) => {
+        setNewDescription("");
+        setNewTitle("");
+        fetchUpdatedTask();
+        setLoading(false);
+      });
+    }
+
     setEditDescription(false);
     setEditTitle(false);
-  };
-
-  const handleUpdateTask = ({ key, value }) => {
-    setLoading(true);
-    updateTask({ id: task._id, [key]: value }).then((res) => {
-      setNewDescription("");
-      setNewTitle("");
-      fetchUpdatedTask();
-      setLoading(false);
-    });
-
-    handleOnBlur();
   };
 
   const fetchUpdatedTask = () => {
@@ -99,11 +97,7 @@ const SingleTaskScreen = () => {
                     {task.name}
                   </Text>
 
-                  <TitleIcon
-                    loading={loading}
-                    task={task}
-                    newTitle={newTitle}
-                  />
+                  <TitleIcon loading={loading} newTitle={newTitle} />
                 </Row>
               </Box>
             ) : (
@@ -137,7 +131,6 @@ const SingleTaskScreen = () => {
 
                   <DescriptionIcon
                     loading={loading}
-                    task={task}
                     newDescription={newDescription}
                   />
                 </Row>
@@ -182,7 +175,7 @@ const SingleTaskScreen = () => {
   );
 };
 
-const TitleIcon = ({ loading, newTitle, task }) => {
+const TitleIcon = ({ loading, newTitle }) => {
   return loading && newTitle !== "" ? (
     <Loading color={COLOR_WHITE} />
   ) : (
@@ -190,7 +183,7 @@ const TitleIcon = ({ loading, newTitle, task }) => {
   );
 };
 
-const DescriptionIcon = ({ loading, newDescription, task }) => {
+const DescriptionIcon = ({ loading, newDescription }) => {
   return loading && newDescription !== "" ? (
     <Loading color={COLOR_WHITE} />
   ) : (
