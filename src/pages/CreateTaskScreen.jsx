@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { createTask } from "../services/task";
 
+import { capitalizeFirstLetter } from "../utils";
 import { ReactComponent as AddCircle } from "../assets/svg/add-circle.svg";
 import { ReactComponent as Check } from "../assets/svg/check.svg";
 
@@ -92,11 +93,13 @@ const CreateTaskScreen = () => {
           />
           <Margin top="8px" />
           <Select
+            testId="selectCategory"
             placeholder="Selecione uma categoria"
             onChange={(e) => handleSelectChange(e)}
             value={category}
             options={CATEGORIES.map((category, index) => (
               <Option
+                testId={`category${capitalizeFirstLetter(category.value)}`}
                 text={category.label}
                 value={category.value}
                 key={index}

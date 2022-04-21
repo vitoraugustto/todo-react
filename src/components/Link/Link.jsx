@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import { Link as RouterLink } from "react-router-dom";
 
-const Link = ({ to = "", state, style, children }) => {
+const Link = ({ testId, to = "", state, style, children }) => {
   return (
-    <StyledLink to={to} state={state} style={{ ...style }}>
+    <StyledLink data-testid={testId} to={to} state={state} style={{ ...style }}>
       {children}
     </StyledLink>
   );

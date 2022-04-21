@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { addTestId } from "../../utils";
 
 const Box = ({
   color,
@@ -12,11 +13,14 @@ const Box = ({
   borderRadius,
   borderColor,
   onClick,
+  testId,
   children,
   flex,
 }) => {
   return onClick ? (
     <StyledButton
+      testId={testId}
+      onClick={onClick}
       color={color}
       bgColor={bgColor}
       height={height}
@@ -25,7 +29,6 @@ const Box = ({
       hCenter={hCenter}
       borderRadius={borderRadius}
       borderColor={borderColor}
-      onClick={onClick}
       flex={flex}
       style={{ ...style }}
     >
@@ -33,6 +36,7 @@ const Box = ({
     </StyledButton>
   ) : (
     <StyledBox
+      testId={testId}
       color={color}
       bgColor={bgColor}
       height={height}
@@ -49,7 +53,9 @@ const Box = ({
   );
 };
 
-const StyledBox = styled.div`
+const StyledBox = styled.div.attrs((props) => {
+  return addTestId(props);
+})`
   display: flex;
   flex-direction: column;
   word-break: break-word;
@@ -66,7 +72,9 @@ const StyledBox = styled.div`
     props.borderColor ? "1px solid " + props.borderColor : undefined};
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.button.attrs((props) => {
+  return addTestId(props);
+})`
   display: flex;
   flex-direction: column;
   flex: ${(props) => (props.flex ? 1 : undefined)};

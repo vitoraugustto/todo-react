@@ -5,9 +5,14 @@ import { Option } from "..";
 
 import { COLOR_BLACK_800, COLOR_WHITE } from "../../themes/theme";
 
-const Select = ({ placeholder, value, onChange, options }) => {
+const Select = ({ placeholder, testId, value, onChange, options }) => {
   return (
-    <StyledSelect onChange={onChange} value={value} placeholder={placeholder}>
+    <StyledSelect
+      data-testid={testId}
+      onChange={onChange}
+      value={value}
+      placeholder={placeholder}
+    >
       <Option value="" text={placeholder} hidden />
       {options}
     </StyledSelect>

@@ -62,7 +62,7 @@ const TasksScreen = () => {
         </Text>
 
         <Margin vertical="16px">
-          <Link to="/todo-react/create-task">
+          <Link testId="createNewTask" to="/todo-react/create-task">
             <Button borderColor={COLOR_WHITE}>
               <AddCircle fill={COLOR_WHITE} /> <Margin right="8px" /> Criar uma
               nova tarefa
@@ -79,7 +79,11 @@ const TasksScreen = () => {
           ) : (
             tasks.map((task, index) => (
               <Fragment key={index}>
-                <Link to="/todo-react/task" state={{ singleTask: task }}>
+                <Link
+                  testId={`task${index}`}
+                  to="/todo-react/task"
+                  state={{ singleTask: task }}
+                >
                   <Task
                     task={task}
                     handleCheckTask={handleCheckTask}
