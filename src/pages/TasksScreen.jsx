@@ -34,7 +34,7 @@ const TasksScreen = () => {
 
   const fetchData = () => {
     setLoading(true);
-    fetchTasks({}).then((response) => {
+    fetchTasks({ page: 0 }).then((response) => {
       setLoading(false);
       setTasks(response.data);
     });
