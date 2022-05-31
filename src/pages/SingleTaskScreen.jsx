@@ -34,6 +34,13 @@ const SingleTaskScreen = () => {
   const [editTitle, setEditTitle] = useState(false);
   const [editDescription, setEditDescription] = useState(false);
 
+  const disableButton =
+    !(editTitle || editDescription) || editDescription
+      ? newDescription === ""
+      : editTitle
+      ? newTitle === ""
+      : null;
+
   const handleEditTitle = () => {
     setEditTitle(true);
     setEditDescription(false);
@@ -47,7 +54,7 @@ const SingleTaskScreen = () => {
   const handleUpdateTask = ({ key, value }) => {
     if (value) {
       setLoading(true);
-      updateTask({ id: task._id, [key]: value }).then((res) => {
+      updateTask({ id: task._id, [key]: value }).then(() => {
         setNewDescription("");
         setNewTitle("");
         fetchUpdatedTask();
@@ -165,7 +172,11 @@ const SingleTaskScreen = () => {
         </Box>
         <Box>
           <Margin top="16px" />
-          <Button onClick={null} borderColor={COLOR_WHITE}>
+          <Button
+            disabled={disableButton}
+            onClick={null}
+            borderColor={COLOR_WHITE}
+          >
             OK
           </Button>
           <Link to="/todo-react">

@@ -47,6 +47,7 @@ const StyledButton = styled.button`
   border-radius: ${(props) => (props.rounded ? "8px" : "0")};
   font-family: ${TITILLIUM};
   font-size: ${(props) => (props.fontSize ? props.fontSize : "22px")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 `;
 
 export default Button;
