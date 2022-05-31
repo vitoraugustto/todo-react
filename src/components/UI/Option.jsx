@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { COLOR_BLACK_800, COLOR_WHITE } from "../../themes/theme";
 
-const Select = ({ testId, disabled, selected, hidden, value, text }) => {
+const Option = ({ testId, disabled, selected, hidden, value, text }) => {
   return (
     <StyledOption
       data-testid={testId}
@@ -22,4 +22,4 @@ const StyledOption = styled.option`
   color: ${COLOR_WHITE};
 `;
 
-export default Select;
+export default Option;
