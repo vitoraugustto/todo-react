@@ -155,6 +155,12 @@ const SingleTaskScreen = () => {
             <Text size="16px" font={TITILLIUM}>
               Criado em {formatDate(task.date)} às {formatTime(task.date)}
             </Text>
+            {task.date === task.updated_at ? null : (
+              <Text size="16px" font={TITILLIUM}>
+                Atualizado em {formatDate(task.updated_at)} às{" "}
+                {formatTime(task.updated_at)}
+              </Text>
+            )}
           </Padding>
         </Box>
         <Box>
