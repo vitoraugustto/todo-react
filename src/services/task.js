@@ -1,4 +1,4 @@
-import { API_INSTANCE } from "./axios";
+import { API_INSTANCE, POST } from "./axios";
 
 export const fetchTasks = ({ page = 0, limit = 99 }) => {
   return API_INSTANCE({
@@ -21,7 +21,7 @@ export const checkTask = ({ id }) => {
 export const createTask = ({ name, description, category }) => {
   return API_INSTANCE({
     url: `/api/v1/tasks`,
-    method: "POST",
+    method: POST,
     data: {
       name: name,
       description: description,
@@ -39,7 +39,7 @@ export const deleteTask = ({ id }) => {
 export const updateTask = ({ id, name, description, category }) => {
   return API_INSTANCE({
     url: `/api/v1/updateOne/${id}`,
-    method: "POST",
+    method: POST,
     data: {
       name: name,
       description: description,

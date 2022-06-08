@@ -1,6 +1,9 @@
 import axios from "axios";
 import { BACKEND_BASE_URL } from "../config/api";
 
+export const POST = "POST";
+export const GET = "GET";
+
 const JSON_HEADER = {
   Accept: "application/json",
   "Content-Type": "application/json",
