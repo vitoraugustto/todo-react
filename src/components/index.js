@@ -4,7 +4,6 @@ import Margin from "./Layout/Margin";
 import Box from "./Layout/Box";
 import Row from "./Layout/Row";
 
-import Icon from "./UI/Icon/Icon";
 import Input from "./UI/Input";
 import Button from "./UI/Button";
 import Select from "./UI/Select";
@@ -24,7 +23,6 @@ export {
   Margin,
   Box,
   Row,
-  Icon,
   Input,
   Text,
   Title,
