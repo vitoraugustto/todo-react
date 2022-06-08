@@ -22,13 +22,14 @@ import { COLOR_BLACK_800, COLOR_WHITE, TITILLIUM } from "../themes/theme";
 
 import { CATEGORIES } from "./TasksScreen";
 import { formatDate, formatTime } from "../utils";
-import { fetchSingleTask, updateTask } from "../services/task";
+import { deleteTask, fetchSingleTask, updateTask } from "../services/task";
 
 const SingleTaskScreen = () => {
   const location = useLocation();
   const { singleTask } = location.state;
 
   const [loading, setLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const [task, setTask] = useState(singleTask);
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
@@ -67,6 +68,13 @@ const SingleTaskScreen = () => {
     setEditTitle(false);
   };
 
+  const handleDeleteTask = () => {
+    if (deleteLoading) return;
+
+    setDeleteLoading(true);
+    deleteTask({ id: singleTask._id }).then(() => setLoading(false));
+  };
+
   const fetchUpdatedTask = () => {
     fetchSingleTask({ id: task._id }).then((response) =>
       setTask(response.data)
@@ -99,7 +107,9 @@ const SingleTaskScreen = () => {
                   {CATEGORIES[task.category].label}
                 </Text>
               </Box>
-              <Trash width={32} height={32} fill={COLOR_WHITE} />
+              <Box onClick={handleDeleteTask}>
+                <Trash width={32} height={32} fill={COLOR_WHITE} />
+              </Box>
             </Row>
             <Margin top="20px" />
             <Text size="16px">Título:</Text>
@@ -121,7 +131,6 @@ const SingleTaskScreen = () => {
                 onBlur={() =>
                   handleUpdateTask({ key: "name", value: newTitle })
                 }
-                autofocus={editTitle}
                 style={{ height: "45px" }}
                 placeholder="Editar título..."
               />
@@ -154,7 +163,6 @@ const SingleTaskScreen = () => {
                     value: newDescription,
                   })
                 }
-                autofocus={editDescription}
                 style={{ height: "45px" }}
                 placeholder="Editar descrição..."
               />
