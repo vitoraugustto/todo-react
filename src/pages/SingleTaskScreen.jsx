@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import { ReactComponent as Edit } from "../assets/svg/edit.svg";
+import { ReactComponent as Trash } from "../assets/svg/trash.svg";
 
 import {
   Background,
@@ -87,14 +88,19 @@ const SingleTaskScreen = () => {
           borderRadius="4px"
         >
           <Padding all="8px">
-            <Text size="16px">Categoria:</Text>
-            <Text
-              size="20px"
-              color={CATEGORIES[task.category].color}
-              font={TITILLIUM}
-            >
-              {CATEGORIES[task.category].label}
-            </Text>
+            <Row vCenter style={{ justifyContent: "space-between" }}>
+              <Box>
+                <Text size="16px">Categoria:</Text>
+                <Text
+                  size="20px"
+                  color={CATEGORIES[task.category].color}
+                  font={TITILLIUM}
+                >
+                  {CATEGORIES[task.category].label}
+                </Text>
+              </Box>
+              <Trash width={32} height={32} fill={COLOR_WHITE} />
+            </Row>
             <Margin top="20px" />
             <Text size="16px">Título:</Text>
             {!editTitle ? (
@@ -196,7 +202,7 @@ const TitleIcon = ({ loading, newTitle }) => {
   return loading && newTitle !== "" ? (
     <Loading color={COLOR_WHITE} />
   ) : (
-    <Edit fill={COLOR_WHITE} />
+    <Edit width={32} height={32} fill={COLOR_WHITE} />
   );
 };
 
@@ -204,7 +210,7 @@ const DescriptionIcon = ({ loading, newDescription }) => {
   return loading && newDescription !== "" ? (
     <Loading color={COLOR_WHITE} />
   ) : (
-    <Edit fill={COLOR_WHITE} />
+    <Edit width={32} height={32} fill={COLOR_WHITE} />
   );
 };
 
