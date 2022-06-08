@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { ReactComponent as Edit } from "../assets/svg/edit.svg";
 import { ReactComponent as Trash } from "../assets/svg/trash.svg";
@@ -26,6 +26,7 @@ import { deleteTask, fetchSingleTask, updateTask } from "../services/task";
 
 const SingleTaskScreen = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { singleTask } = location.state;
 
   const [loading, setLoading] = useState(false);
@@ -69,10 +70,13 @@ const SingleTaskScreen = () => {
   };
 
   const handleDeleteTask = () => {
+    setDeleteLoading(true);
     if (deleteLoading) return;
 
-    setDeleteLoading(true);
-    deleteTask({ id: singleTask._id }).then(() => setLoading(false));
+    deleteTask({ id: task._id }).then(() => {
+      navigate("/todo-react");
+      setDeleteLoading(false);
+    });
   };
 
   const fetchUpdatedTask = () => {
@@ -107,9 +111,13 @@ const SingleTaskScreen = () => {
                   {CATEGORIES[task.category].label}
                 </Text>
               </Box>
-              <Box onClick={handleDeleteTask}>
-                <Trash width={32} height={32} fill={COLOR_WHITE} />
-              </Box>
+              {deleteLoading ? (
+                <Loading color={COLOR_WHITE} />
+              ) : (
+                <Box onClick={handleDeleteTask}>
+                  <Trash width={32} height={32} fill={COLOR_WHITE} />
+                </Box>
+              )}
             </Row>
             <Margin top="20px" />
             <Text size="16px">Título:</Text>
