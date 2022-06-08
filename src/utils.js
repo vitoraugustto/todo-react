@@ -6,7 +6,11 @@ export const formatDate = (d) => {
   const date = new Date(d);
 
   return `${
-    date.getDate() + "/" + pad(date.getMonth() + 1) + "/" + date.getFullYear()
+    pad(date.getDate()) +
+    "/" +
+    pad(date.getMonth() + 1) +
+    "/" +
+    date.getFullYear()
   }`;
 };
 
