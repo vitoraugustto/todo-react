@@ -110,7 +110,7 @@ const SingleTaskScreen = () => {
                     {task.name}
                   </Text>
 
-                  <TitleIcon loading={loading} newTitle={newTitle} />
+                  <EditSVG loading={loading} text={newTitle} />
                 </Row>
               </Box>
             ) : (
@@ -126,7 +126,6 @@ const SingleTaskScreen = () => {
                 placeholder="Editar título..."
               />
             )}
-
             <Margin top="8px" />
             <Text size="16px">Descrição:</Text>
             <Margin top="8px" />
@@ -142,10 +141,7 @@ const SingleTaskScreen = () => {
                     {task.description}
                   </Text>
 
-                  <DescriptionIcon
-                    loading={loading}
-                    newDescription={newDescription}
-                  />
+                  <EditSVG loading={loading} text={newDescription} />
                 </Row>
               </Box>
             ) : (
@@ -198,16 +194,8 @@ const SingleTaskScreen = () => {
   );
 };
 
-const TitleIcon = ({ loading, newTitle }) => {
-  return loading && newTitle !== "" ? (
-    <Loading color={COLOR_WHITE} />
-  ) : (
-    <Edit width={32} height={32} fill={COLOR_WHITE} />
-  );
-};
-
-const DescriptionIcon = ({ loading, newDescription }) => {
-  return loading && newDescription !== "" ? (
+const EditSVG = ({ loading, text }) => {
+  return loading && text !== "" ? (
     <Loading color={COLOR_WHITE} />
   ) : (
     <Edit width={32} height={32} fill={COLOR_WHITE} />
