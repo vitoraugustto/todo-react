@@ -13,7 +13,7 @@ const App = () => {
       <GlobalStyle />
       <Routes>
         <Route path="/todo-react" element={<TasksScreen />} />
-        <Route path="/todo-react/task" element={<SingleTaskScreen />} />
+        <Route path="/todo-react/task/:id" element={<SingleTaskScreen />} />
         <Route path="/todo-react/create-task" element={<CreateTaskScreen />} />
       </Routes>
     </Router>

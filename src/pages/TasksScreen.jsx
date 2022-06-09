@@ -81,7 +81,7 @@ const TasksScreen = () => {
               <Fragment key={index}>
                 <Link
                   testId={`task${index}`}
-                  to="/todo-react/task"
+                  to={`/todo-react/task/${task._id}`}
                   state={{ singleTask: task }}
                 >
                   <Task
