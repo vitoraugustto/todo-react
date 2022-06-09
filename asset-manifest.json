@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/todo-react/static/js/main.b3bb55e3.js",
+    "main.js": "/todo-react/static/js/main.da60b83c.js",
     "index.html": "/todo-react/index.html",
     "static/media/chevron.svg": "/todo-react/static/media/chevron.91f9068f4348686bf7f0c9ec973614bf.svg",
     "static/media/loading.svg": "/todo-react/static/media/loading.57a5e83f48d8da17fb7fc226e53a832f.svg",
@@ -8,9 +8,9 @@
     "static/media/trash.svg": "/todo-react/static/media/trash.68aade56655f922f91f9eacb8b913355.svg",
     "static/media/check.svg": "/todo-react/static/media/check.03505e4dcc437d72086cec77633e3076.svg",
     "static/media/add-circle.svg": "/todo-react/static/media/add-circle.a8c13406aad362b3912d875175755158.svg",
-    "main.b3bb55e3.js.map": "/todo-react/static/js/main.b3bb55e3.js.map"
+    "main.da60b83c.js.map": "/todo-react/static/js/main.da60b83c.js.map"
   },
   "entrypoints": [
-    "static/js/main.b3bb55e3.js"
+    "static/js/main.da60b83c.js"
   ]
 }
